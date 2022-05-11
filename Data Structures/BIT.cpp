@@ -1,3 +1,5 @@
+//Stores 0 to n-1 elements if initialized bit(n);
+//To store elements upto n(inclusive) initialize bit(n+1);
 class BIT {
 private:
     int *bit, n;
