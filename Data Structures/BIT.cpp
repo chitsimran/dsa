@@ -17,7 +17,11 @@ public:
             ind = ind + (ind & -ind);
         }
     }
-    int sum(int ind) {
+    void add(int l, int r, int val) {
+        add(l, val);
+        add(r+1, val - 1);
+    }
+    int get(int ind) {
         ind += 1;
         int res = 0;
         while (ind > 0) {
@@ -26,7 +30,7 @@ public:
         }
         return res;
     }
-    int sum(int l, int r) {
-        return sum(r) - sum(l - 1);
+    int get(int l, int r) {
+        return get(r) - get(l - 1);
     }
 };
