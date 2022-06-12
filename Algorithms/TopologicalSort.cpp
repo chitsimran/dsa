@@ -1,19 +1,20 @@
 vector<int> answer;
-vector<bool> visited;
+vector<int> color;
 vector<int> parent;
 bool cycle = false;
 
 void dfs(vector<vector<int>>& graph, int v) {
-    visited[v] = true;
+    color[v] = 1;
     for (int edge : graph[v]) {
-        if (visited[edge] && parent[v] == edge) {
+        if (color[edge] == 1) {
             cycle = true;
             return;
-        } else if (!visited[edge]) {
+        } else if (!color[edge]) {
             parent[edge] = v;
             dfs(graph, edge);
         }
     }
+    color[v] = 2;
     answer.pb(v);
 }
 
