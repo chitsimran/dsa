@@ -19,7 +19,7 @@ public:
     }
     void add(int l, int r, int val) {
         add(l, val);
-        add(r+1, val - 1);
+        add(r + 1, -val);
     }
     int get(int ind) {
         ind += 1;
