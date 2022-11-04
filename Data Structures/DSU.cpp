@@ -11,13 +11,13 @@ public:
             unionSize[i] = 1;
         }
     };
-    int findSet(int a) {
+    int find(int a) {
         if (parent[a] == a) return a;
-        return parent[a] = findSet(parent[a]);
+        return parent[a] = find(parent[a]);
     }
-    void unionSets(int a, int b) {
-        a = findSet(a);
-        b = findSet(b);
+    void merge(int a, int b) {
+        a = find(a);
+        b = find(b);
         if (a == b) return;
         numSets--;
         if (unionSize[a] < unionSize[b])
@@ -26,12 +26,12 @@ public:
         unionSize[a] += unionSize[b];
     }
     bool isSameSet(int a, int b) {
-        return findSet(a) == findSet(b);
+        return find(a) == find(b);
     }
-    int numDisjointSets() {
+    int totalSets() {
         return numSets;
     }
-    int sizeOfSet(int i) {
-        return unionSize[findSet(i)];
+    int setSize(int i) {
+        return unionSize[find(i)];
     }
 };
